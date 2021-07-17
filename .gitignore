@@ -1,14 +1,3 @@
 
-omerDataAcquisition/bin/Debug/net5.0/appsettings.Development.json
-omerDataAcquisition/bin/Debug/net5.0/appsettings.json
-omerDataAcquisition/bin/Debug/net5.0/omerDataAcquisition
-omerDataAcquisition/bin/Debug/net5.0/omerDataAcquisition.deps.json
-omerDataAcquisition/bin/Debug/net5.0/omerDataAcquisition.dll
-omerDataAcquisition/bin/Debug/net5.0/omerDataAcquisition.pdb
-omerDataAcquisition/bin/Debug/net5.0/omerDataAcquisition.runtimeconfig.dev.json
-omerDataAcquisition/bin/Debug/net5.0/omerDataAcquisition.runtimeconfig.json
-omerDataAcquisition/bin/Debug/net5.0/omerDataAcquisition.Views.dll
-omerDataAcquisition/bin/Debug/net5.0/omerDataAcquisition.Views.pdb
-omerDataAcquisition/bin/Debug/net5.0/ref/omerDataAcquisition.dll
-omerDataAcquisition/.vscode/launch.json
-omerDataAcquisition/.vscode/tasks.json
+omerDataAcquisition/bin/
+omerDataAcquisition/.vscode/
