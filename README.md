@@ -1,2 +1,2 @@
 # omer
-Optical Math Equation Recognizer
+Optical Math Expression Recognizer
