@@ -1,15 +1,16 @@
 var canvas, ctx, flag = false,
-        prevX = 0,
-        currX = 0,
-        prevY = 0,
-        currY = 0,
-        dot_flag = false;
+    prevX = 0,
+    currX = 0,
+    prevY = 0,
+    currY = 0,
+    dot_flag = false;
 
 var x = "black",
     y = 2;
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
     canvas = document.getElementById('can');
+    canvasContainer = document.getElementById('canvasContainer');
     ctx = canvas.getContext("2d");
     w = canvas.width;
     h = canvas.height;
@@ -26,6 +27,9 @@ document.addEventListener("DOMContentLoaded", function(){
     canvas.addEventListener("mouseout", function (e) {
         findxy('out', e)
     }, false);
+
+    outputsize()
+    new ResizeObserver(outputsize).observe(canvasContainer)
 });
 
 function draw() {
@@ -71,20 +75,27 @@ function findxy(res, e) {
     }
 }
 
-function getCurrentX(e){
+function getCurrentX(e) {
     var rect = canvas.getBoundingClientRect();
     return (e.clientX - rect.left) / (rect.right - rect.left) * canvas.width;
 }
-   
-function getCurrentY(e){
+
+function getCurrentY(e) {
     var rect = canvas.getBoundingClientRect();
     return (e.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height;
-} 
+}
 
 function erase() {
-    var m = confirm("Want to clear");
-    if (m) {
-        ctx.clearRect(0, 0, w, h);
-        // document.getElementById("canvasimg").style.display = "none";
-    }
+    ctx.clearRect(0, 0, w, h);
+}
+
+function send(){
+    location.reload();
+}
+
+function outputsize() {
+    newWidth = canvasContainer.offsetWidth * 0.8;
+    if (newWidth > 400) newWidth = 400;
+    canvas.width = newWidth;
+    canvas.height = newWidth; // Square canvas
 }

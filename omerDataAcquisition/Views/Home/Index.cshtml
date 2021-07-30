@@ -10,8 +10,8 @@
 
 <div class="container" style="background-color: #eee;">
     <div class="row">
-        <div class="col text-center">
-            <canvas id="can" class="mx-auto" width="400" height="400" style="border:2px solid;background-color: #fff;"></canvas>
+        <div id="canvasContainer" class="col text-center">
+            <canvas id="can" class="mx-auto" width="400" height="400"></canvas>
         </div>
     </div>
     <div class="row">
@@ -19,7 +19,7 @@
             <button type="button" class="btn btn-outline-info btn-lg btn-block" onclick="erase()">Limpiar</button>
         </div>
         <div class="col">
-            <button type="button" class="btn btn-success btn-lg btn-block">Enviar</button>
+            <button type="button" class="btn btn-success btn-lg btn-block" onclick="send()">Enviar</button>
         </div>
     </div>
 </div>
