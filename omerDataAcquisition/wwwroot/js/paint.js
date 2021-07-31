@@ -14,7 +14,23 @@ document.addEventListener("DOMContentLoaded", function () {
     ctx = canvas.getContext("2d");
     w = canvas.width;
     h = canvas.height;
+    
 
+    addLiseteners();
+
+    outputsize()
+    new ResizeObserver(outputsize).observe(canvasContainer)
+});
+
+function addLiseteners(){
+
+    window.ontouchstart = function(event) {
+        if (event.touches.length>1) { //If there is more than one touch
+            event.preventDefault();
+        }
+    }
+
+    // Click Events
     canvas.addEventListener("mousemove", function (e) {
         findxy('move', e)
     }, false);
@@ -28,9 +44,21 @@ document.addEventListener("DOMContentLoaded", function () {
         findxy('out', e)
     }, false);
 
-    outputsize()
-    new ResizeObserver(outputsize).observe(canvasContainer)
-});
+    // Tap Events (a.k.a Touch)
+    canvas.addEventListener("touchstart", function (e) {
+        findxy('down', e.touches[0])
+        // dispatchMouseEvent("mouseDown",e);
+    }, false);
+    canvas.addEventListener("touchend", function (e) {
+        findxy('up', e.touches[0])
+        // dispatchMouseEvent("mouseup",e);
+    }, false);
+    canvas.addEventListener("touchmove", function (e) {
+        findxy('move', e.touches[0])
+        // dispatchMouseEvent("mousemove",e);
+    }, false);
+    
+}
 
 function draw() {
     ctx.beginPath();
