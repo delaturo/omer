@@ -11,10 +11,7 @@ var x = "black",
 document.addEventListener("DOMContentLoaded", function () {
     canvas = document.getElementById('can');
     canvasContainer = document.getElementById('canvasContainer');
-    ctx = canvas.getContext("2d");
-    w = canvas.width;
-    h = canvas.height;
-    
+    ctx = canvas.getContext("2d");    
 
     addLiseteners();
 
@@ -113,12 +110,25 @@ function getCurrentY(e) {
     return (e.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height;
 }
 
-function erase() {
-    ctx.clearRect(0, 0, w, h);
+function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function send(){
-    location.reload();
+    var image = canvas.toDataURL("image/png");
+    buffer = image.replace('data:image/png;base64,', '');
+    
+    var data = new FormData();
+    data.append("charId",document.getElementById("charId").value);
+    data.append("imgCaptured", buffer);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/Home/SaveCapture");
+    xhr.onload = function(){
+        console.log(this.response);
+        location.reload();
+    };
+    xhr.send(data);
 }
 
 function outputsize() {

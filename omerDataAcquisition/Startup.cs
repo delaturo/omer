@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using omerDataAcquisition.Database;
 
 namespace omerDataAcquisition
 {
@@ -16,6 +17,7 @@ namespace omerDataAcquisition
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            DBContext.config(configuration.GetConnectionString("OmerDB"));
         }
 
         public IConfiguration Configuration { get; }
@@ -50,7 +52,7 @@ namespace omerDataAcquisition
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
             });
         }
     }

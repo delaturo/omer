@@ -1,10 +1,12 @@
-﻿@{
+﻿@model CharStatus
+@{
     ViewData["Title"] = "Home Page";
 }
 <script src="~/js/paint.js"></script>
+    <input id="charId" name="charId" type="hidden" value="@Model.id">
     <div class="text-center">
-        <h1 class="display-4">Welcome</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <h3> Dibuja en el recuadro en blanco el siguiente caracter: "@Model.letter" <span style="white-space: nowrap;">< @Model.name ></span> </h3>
+        <p>Número de capturas: @Model.count</p>
     </div>
 
     <div class="container" style="background-color: #eee;">
@@ -14,8 +16,9 @@
             </div>
         </div>
         <div class="row">
+                 
             <div class="col">
-                <button type="button" class="btn btn-outline-info btn-lg btn-block" onclick="erase()">Limpiar</button>
+                <button type="button" class="btn btn-outline-info btn-lg btn-block" onclick="clearCanvas()">Limpiar</button>
             </div>
             <div class="col">
                 <button type="button" class="btn btn-success btn-lg btn-block" onclick="send()">Enviar</button>

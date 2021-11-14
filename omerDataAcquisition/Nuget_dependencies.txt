@@ -1,0 +1,5 @@
+Install theses nuget packages:
+ - System.Data.SqlCliente
+ - MySqlConnector
+
+dotnet add package %Package%
