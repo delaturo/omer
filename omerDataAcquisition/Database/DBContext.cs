@@ -32,7 +32,7 @@ namespace omerDataAcquisition.Database{
 
         public string requestCharStatus(string c){
             string res = "";
-            string query = "SELECT id, letter, utf8_val, count FROM charstatus";
+            string query = "SELECT id, letter, utf8_val, count, name FROM charstatus";
             if (c != null){
                 query += "WHERE letter=" + c;
             }
@@ -40,12 +40,13 @@ namespace omerDataAcquisition.Database{
                 conn.Open();
                 using (MySqlCommand cmd = new MySqlCommand(query,conn)){
                     using(MySqlDataReader reader =cmd.ExecuteReader()){
+                        res = "[";
                         while(reader.Read()){
-                            var r = "{" + "id:\"" + reader.GetString(0) + "\"" + ",letter:\"" + reader.GetString(1) + "\""
-                             + ",utf8_val:\"" + reader.GetString(2) + "\"" + ",count:\"" + reader.GetString(3) + "\"" + "}";
-                             res = r + "\n";
+                            res = res +  "{\"id\":" + reader.GetInt64(0) + ",\"letter\":\"" + reader.GetString(1) + "\""
+                             + ",\"utf8_val\":" + reader.GetInt64(2) + ",\"count\":" + reader.GetInt64(3) +
+                             ", \"name\":\"" + reader.GetString(4) + "\"},";
                         }
-                        res = "{\n" + res + "}";
+                        res = res.Remove(res.Length -1 , 1 ) + "]";
                     }
                 }
             }

@@ -9,13 +9,18 @@ namespace omerDataAcquisition.Database{
             return null;
         }
 
-        public CharStatus[] getAllCharStatus(){
-            return null;
+        public static CharStatus[] getAllCharStatus(){
+            string jsonRes = DBContext.getDBInstance().requestCharStatus(null);
+            CharStatus []cs = JsonSerializer.Deserialize<CharStatus[]>(jsonRes);
+            return cs;
         }
 
         public static CharStatus getRandomChar(){
             string jsonRes = DBContext.getDBInstance().requestRandChar();
-            CharStatus cs = JsonSerializer.Deserialize<CharStatus>(jsonRes);
+            CharStatus cs = null;
+            if (!string.IsNullOrEmpty(jsonRes)){
+                cs = JsonSerializer.Deserialize<CharStatus>(jsonRes);
+            }
             return cs;
         }
 

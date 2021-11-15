@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text.Json;
 using System.IO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -28,6 +26,12 @@ namespace omerDataAcquisition.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        public IActionResult Status(){
+            CharStatus []charStatus = Repository.getAllCharStatus();
+            ViewData["charsStatus"] = JsonSerializer.Serialize<CharStatus[]>(charStatus);
             return View();
         }
 
