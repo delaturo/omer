@@ -24,7 +24,7 @@ namespace omerDataAcquisition.Controllers
             return View(cs);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Info()
         {
             return View();
         }
