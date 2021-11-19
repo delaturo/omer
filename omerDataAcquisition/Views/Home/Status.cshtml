@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Status";
+}
+<link rel="stylesheet" href="~/css/tabulator.min.css" />
+<script type="text/javascript" src="~/js/tabulator.min.js"></script>
+<script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var table = new Tabulator("#dataTable", {
+            layout:"fitColumns",
+            data: document.getElementById("data").value,
+            responsiveLayout:"hide",
+            columns:[
+                {title:"Id", field:"id", hozAlign:"center"},
+                {title:"Caracter", field:"letter", hozAlign:"center"},
+                {title:"Nombre", field:"name"},
+                {title:"Capturas", field:"count", hozAlign:"center"},
+                {title:"Progreso", field:"count", sorter:"number", formatter:"progress"},
+            ],
+        });
+    });
+</script>
+<input id="data" name="data" type="hidden" value='@ViewData["charsStatus"]'>
+
+<div class="text-center">
+    <h3> Progreso de capturas: </h3>
+</div>
+
+<div class="container" style="background-color: #eee;">
+    <div id="dataTable"></div>
+</div>

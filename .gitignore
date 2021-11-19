@@ -1,3 +1,5 @@
 
 omerDataAcquisition/bin/
 omerDataAcquisition/.vscode/
+omerDataAcquisition/obj/
+omerDataAcquisition/Properties/serverCredentials.txt

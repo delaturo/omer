@@ -35,6 +35,10 @@ html {
   }
 }
 
+html, body{
+  overscroll-behavior-y: contain; /* disable pull to refresh, keeps glow effects */
+}
+
 .border-top {
   border-top: 1px solid #e5e5e5;
 }
@@ -62,10 +66,27 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
+
+body.refreshing .refresher {
+  transform: translate3d(0,150%,0) scale(1);
+  z-index: 1;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+
+#can{
+  border:2px solid;
+  background-color: #fff;
+  padding: 1em;
+}
+
+#canvasContainer{
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
