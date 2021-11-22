@@ -14,8 +14,7 @@
                 {title:"Id", field:"id", hozAlign:"center"},
                 {title:"Caracter", field:"letter", hozAlign:"center"},
                 {title:"Nombre", field:"name"},
-                {title:"Capturas", field:"count", hozAlign:"center"},
-                {title:"Progreso", field:"count", sorter:"number", formatter:"progress"},
+                {title:"Progreso", field:"count", sorter:"number", formatter:"progress", formatterParams:{max:100,legend:true}},
             ],
         });
     });
